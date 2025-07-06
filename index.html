@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Company Name | Professional Website</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Professional business website built from scratch.">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #000;
+      overflow-x: hidden;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: rgba(0,0,0,0.6);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+    }
+
+    header img {
+      height: 50px;
+      border-radius: 8px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 15px;
+      text-decoration: none;    
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #00FFFF;
+    }
+
+    .hero {
+      text-align: center;
+      position: relative;
+      height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1593642532400-2682810df593?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+
+    .hero h1, .hero p, .hero a {
+      position: relative;
+      z-index: 1;
+      text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.4);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      max-width: 800px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00FFFF, #007BFF);
+      color: #000;
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.4s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00FFFF;
+    }
+
+    .chain {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      background: #00FFFF;
+      color: #000;
+      font-size: 1.2rem;
+      font-weight: 600;
+      padding: 8px 0;
+      position: relative;
+    }
+
+    .chain-text {
+      display: inline-block;
+      animation: scroll 10s linear infinite;
+    }
+
+    @keyframes scroll {
+      from { transform: translateX(0%); }
+      to { transform: translateX(-50%); }
+    }
+
+    section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .intro-section {
+      background: #f9f9f9;
+      border-left: 5px solid #00FFFF;
+      border-radius: 12px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 255, 255, 0.1);
+    }
+
+    .services-grid {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .service-card {
+      background: #fff;
+      border: 2px solid #00FFFF;
+      border-radius: 15px;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 8px 30px rgba(0, 255, 255, 0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 255, 255, 0.3);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .service-card h3 {
+      margin: 10px 0;
+      font-size: 1.4rem;
+    }
+
+    .service-card p {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    .service-card .btn-primary {
+      margin-top: 15px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .review-card {
+      background: #fff;
+      border: 2px solid #00FFFF;
+      border-radius: 12px;
+      text-align: center;
+      padding: 20px;
+      box-shadow: 0 8px 20px rgba(0, 255, 255, 0.1);
+      transition: all 0.4s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.3);
+    }
+
+    .faq-item {
+      background: #f1f1f1;
+      margin: 10px 0;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .faq-question {
+      padding: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      background: #eaeaea;
+      transition: all 0.4s ease;
+      padding: 0 20px;
+      color: #555;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding: 20px;
+    }
+
+    .contact-section {
+      background: #f9f9f9;
+      border-left: 5px solid #00FFFF;
+      border-radius: 12px;
+      padding: 60px 40px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 255, 255, 0.1);
+    }
+
+    footer {
+      background: #0f2027;
+      color: #00FFFF;
+      text-align: center;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Logo_TV_2015.svg/512px-Logo_TV_2015.svg.png" alt="Logo">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#intro">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h1>Welcome to <span id="changing-text">Company Name</span></h1>
+  <p>Creative solutions to grow your business online.</p>
+  <a href="#contact" class="btn-primary">Get in Touch</a>
+</section>
+
+<div class="chain">
+  <div class="chain-text">
+    • CREATIVE SOLUTIONS • MODERN DESIGN • DIGITAL EXPERTS • BUSINESS GROWTH •
+  </div>
+</div>
+
+<section id="intro" class="intro-section" data-aos="fade-up">
+  <h2>About Us</h2>
+  <p>We build modern websites, branding, graphics & marketing strategies to grow your business.</p>
+</section>
+
+<section id="services" data-aos="fade-up">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="https://source.unsplash.com/400x300/?webdesign" alt="Web Design">
+      <h3>Web Design</h3>
+      <p>Modern, responsive websites.</p>
+      <a href="services.html" class="btn-primary">View Details</a>
+    </div>
+
+    <div class="service-card">
+      <img src="https://source.unsplash.com/400x300/?graphicdesign" alt="Graphic Design">
+      <h3>Graphic Design</h3>
+      <p>Creative graphics for your brand.</p>
+      <a href="services.html" class="btn-primary">View Details</a>
+    </div>
+
+    <div class="service-card">
+      <img src="https://source.unsplash.com/400x300/?videoediting" alt="Video Editing">
+      <h3>Video Editing</h3>
+      <p>Professional videos for your products and promotions.</p>
+      <a href="services.html" class="btn-primary">View Details</a>
+    </div>
+
+    <div class="service-card">
+      <img src="https://source.unsplash.com/400x300/?socialmedia" alt="Social Media Management">
+      <h3>Social Media Management</h3>
+      <p>Grow your audience with strategic social campaigns.</p>
+      <a href="services.html" class="btn-primary">View Details</a>
+    </div>
+
+    <div class="service-card">
+      <img src="https://source.unsplash.com/400x300/?seo" alt="SEO Services">
+      <h3>SEO Services</h3>
+      <p>Rank higher on search engines with our SEO plans.</p>
+      <a href="services.html" class="btn-primary">View Details</a>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" data-aos="fade-up">
+  <h2>Client Reviews</h2>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <p>"Amazing team and stunning work!"</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" data-aos="fade-up">
+  <h2>FAQ</h2>
+  <div class="faq-item">
+    <div class="faq-question">What services do you offer?</div>
+    <div class="faq-answer">Web design, graphics, SEO, and marketing.</div>
+  </div>
+</section>
+
+<section id="contact" class="contact-section" data-aos="fade-up">
+  <h2>Contact Us</h2>
+  <form>
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea rows="5" placeholder="Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<footer>
+  <p>&copy; 2025 Company Name. All rights reserved.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 1200, once: true });
+  document.querySelectorAll('.faq-item').forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.toggle('active');
+    });
+  });
+
+  const words = ["Company Name", "Creative Studio", "Digital Experts"];
+  const changingText = document.getElementById("changing-text");
+  let i = 0;
+  setInterval(() => {
+    i = (i + 1) % words.length;
+    changingText.textContent = words[i];
+  }, 2000);
+</script>
+
+</body>
+</html>
